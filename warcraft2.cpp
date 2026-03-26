@@ -10,12 +10,12 @@ string color_to_word[2]={"red","blue"};
 int strength[5]={};//用来记录每种魔兽的血量
 string type_to_name[5]={"dragon","ninja","iceman","lion","wolf"};
 string weapon_to_name[3]={"sword","bomb","arrow"};
-class monster{
+class warrior{
 	public:
 		int color;
         int type;
 		static int TotalMonster[2][5];//记录每种魔兽的数量
-		monster(int color_,int type_):
+		warrior(int color_,int type_):
 		color(color_),type(type_){
 				TotalMonster[color][type]++;
                 source[color]-=strength[type];
@@ -26,48 +26,48 @@ class monster{
 		}
 		
 };
-int monster::TotalMonster[2][5]={};
-class dragon:public monster{
+int warrior::TotalMonster[2][5]={};
+class dragon:public warrior{
     public:
         int weapon;
         float morale;
-        dragon(int color_):monster(color_,0){
+        dragon(int color_):warrior(color_,0){
             weapon=(hour+1)%3;
             morale=(float)source[color]/strength[0];
             cout<<"It has a "<<weapon_to_name[weapon]<<",and it's morale is "<<setprecision(2)<<fixed<<morale<<endl;
 
         }
 };
-class ninja:public monster{
+class ninja:public warrior{
     public:
         int weapon1;
         int weapon2;
-        ninja(int color_):monster(color_,1){
+        ninja(int color_):warrior(color_,1){
             weapon1=(hour+1)%3;
             weapon2=(hour+2)%3;
             cout<<"It has a "<<weapon_to_name[weapon1]<<" and a "<<weapon_to_name[weapon2]<<endl;
 		
         }
 };
-class iceman:public monster{
+class iceman:public warrior{
     public:
         int weapon;
-        iceman(int color_):monster(color_,2){
+        iceman(int color_):warrior(color_,2){
             weapon=(hour+1)%3;
             cout<<"It has a "<<weapon_to_name[weapon]<<endl;
         }
 };
-class lion:public monster{
+class lion:public warrior{
     public:
         int loyalty;
-        lion(int color_):monster(color_,3){
+        lion(int color_):warrior(color_,3){
             loyalty=source[color];
             cout<<"It's loyalty is "<<loyalty<<endl;
 		}
 };
-class wolf:public monster{
+class wolf:public warrior{
     public:
-        wolf(int color_):monster(color_,4){}
+        wolf(int color_):warrior(color_,4){}
 };
 int main(){
 	int n=0;
@@ -86,7 +86,7 @@ int main(){
 		int rpos=0,bpos=0;//记录生成到哪个魔兽了
 		for(int i=0;i<2;i++){
             for(int j=0;j<5;j++)
-			monster::TotalMonster[i][j]=0;
+			warrior::TotalMonster[i][j]=0;
 		}//初始化双方每种魔兽的数量
 		while(!rstop||!bstop){
 			if(!rstop){
