@@ -3,5 +3,5 @@ Focus on simulating an old game called Warcraft, this project is part of the ass
 
 This project has 4 parts altogether. The first part is only about creating monsters one by one in a fixed order. The second part add some properties owned by different kinds of monsters, which would take effect in the third part. The third part add more properties and allow the monsters to march to enemy's headquarter, fight with each other and accquiring weapons if succeed.
 
-By finishing the four parts in order, we can feel that by using oop, the maintainability of some specific programs is greatly enhanced.
+By finishing the four parts in order, we can feel that by using oop, the maintainability of some specific program is greatly enhanced.
 
