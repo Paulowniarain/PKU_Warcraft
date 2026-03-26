@@ -25,7 +25,7 @@ int weapon_hurt(int w,int force){
 int bomb_self_hurt(int force){
     return (int(force*4/10))/2;
 }
-class monster{
+class warrior{
     public:
         int type;
         int number;
@@ -33,7 +33,7 @@ class monster{
         int element;
         int loyalty;
         vector<Weapon> weapons;
-        monster(int i,int j=0):number(i),loyalty(j){}
+        warrior(int i,int j=0):number(i),loyalty(j){}
         void sort_weapon_for_fight(){
             stable_sort(weapons.begin(), weapons.end(), [](const Weapon& a, const Weapon& b) {
             if (a.type != b.type) return a.type < b.type;
@@ -60,19 +60,19 @@ class monster{
             return cnt;
         }
 };
-class dragon:public monster{
+class dragon:public warrior{
     public:
-        dragon(int i):monster(i){
+        dragon(int i):warrior(i){
             type=0;
             force=attack[0];
             element=total_blood[0];
             weapons.push_back(Weapon(number%3,0));
         }
 };
-class ninja:public monster{
+class ninja:public warrior{
     public:
         
-        ninja(int i):monster(i){
+        ninja(int i):warrior(i){
             type=1;
             force=attack[1];
             element=total_blood[1];
@@ -80,18 +80,18 @@ class ninja:public monster{
             weapons.push_back(Weapon((number+1)%3,0));
         }
 };
-class iceman:public monster{
+class iceman:public warrior{
     public:
-        iceman(int i):monster(i){
+        iceman(int i):warrior(i){
             type=2;
             force=attack[2];
             element=total_blood[2];
             weapons.push_back(Weapon(number%3,0));
         }
 };
-class lion:public monster{
+class lion:public warrior{
     public:
-        lion(int i,int j):monster(i,j){
+        lion(int i,int j):warrior(i,j){
             type=3;
             force=attack[3];
             element=total_blood[3];
@@ -99,9 +99,9 @@ class lion:public monster{
         }
 
 };
-class wolf:public monster{
+class wolf:public warrior{
     public:
-        wolf(int i):monster(i){
+        wolf(int i):warrior(i){
             type=4;
             force=attack[4];
             element=total_blood[4];
@@ -112,8 +112,8 @@ class redCenter{
         int source;
         int pos;
         int TotalMonster;
-        monster* p;
-        monster* tmp;
+        warrior* p;
+        warrior* tmp;
         bool occupied;
         redCenter(int i){
             source=i;
@@ -162,8 +162,8 @@ class blueCenter{
         int pos;
         int TotalMonster;
         bool occupied;
-        monster* p;
-        monster* tmp;
+        warrior* p;
+        warrior* tmp;
         blueCenter(int i){
             source=i;
             pos=0;
@@ -207,10 +207,10 @@ class blueCenter{
 int g=1;
 class City{
     public:
-        monster* p1;
-        monster* p2;
-        monster* tmp1;
-        monster* tmp2;
+        warrior* p1;
+        warrior* p2;
+        warrior* tmp1;
+        warrior* tmp2;
         int number;
         City(){
             p1=NULL;
@@ -326,7 +326,7 @@ class City{
                 }
             }
         }
-        void take(monster* winner,monster* loser){
+        void take(warrior* winner,warrior* loser){
             loser->sort_weapon_for_take();
             winner->sort_weapon_for_take();
             if(loser->count_weapon_type(0)>0){
