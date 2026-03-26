@@ -4,7 +4,7 @@
 using namespace std;
 int hour;
 string type_to_name[5]={"dragon","ninja","iceman","lion","wolf"};
-class monster{
+class warrior{
 	public:
 		string color;
 		static int rMonster[5];
@@ -23,7 +23,7 @@ class monster{
 			    	<<" "<<type_to_name[type]<<" in blue headquarter"
 			    	<<endl;
 		}
-		monster(string color_,int type_,int strength_):
+		warrior(string color_,int type_,int strength_):
 		color(color_),type(type_),strength(strength_){
 			if(color=="red"){
 				rMonster[type]++;
@@ -34,8 +34,8 @@ class monster{
 		}
 		
 };
-int monster::rMonster[5]={};
-int monster::bMonster[5]={};
+int warrior::rMonster[5]={};
+int warrior::bMonster[5]={};
 int main(){
 	int n=0;
 	int count=0;//记录回合数
@@ -54,8 +54,8 @@ int main(){
 		bool bstop=false;//判断是否结束生成魔兽
 		int rpos=0,bpos=0;//记录生成到哪个魔兽了
 		for(int i=0;i<5;i++){
-			monster::rMonster[i]=0;
-			monster::bMonster[i]=0;
+			warrior::rMonster[i]=0;
+			warrior::bMonster[i]=0;
 		}//初始化双方每种魔兽的数量
 		while(!rstop||!bstop){
 			if(!rstop){
@@ -63,7 +63,7 @@ int main(){
 				for(i=0;i<5;i++){
 					if(M1>=blood[r[rpos]]){
 						cout<<setw(3)<<setfill('0')<<hour;
-						monster a("red",r[rpos],blood[r[rpos]]);
+						warrior a("red",r[rpos],blood[r[rpos]]);
 						a.born();
 						M1-=blood[r[rpos]];
 						rpos=(rpos+1)%5;
@@ -83,7 +83,7 @@ int main(){
 				for(j=0;j<5;j++){
 					if(M2>=blood[b[bpos]]){
 						cout<<setw(3)<<setfill('0')<<hour;
-						monster c("blue",b[bpos],blood[b[bpos]]);
+						warrior c("blue",b[bpos],blood[b[bpos]]);
 						c.born();
 						M2-=blood[b[bpos]];
 						bpos=(bpos+1)%5;
