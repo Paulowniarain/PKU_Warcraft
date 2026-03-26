@@ -5,7 +5,7 @@ This project has 4 parts altogether. The first part is only about creating monst
 
 By finishing the four parts in order, we can feel that by using oop, the maintainability of some specific program is greatly enhanced.
 
-# Detailed requirements in OpenJudge:
+# Detailed requirements on OpenJudge:
 [World of Warcraft: Preparations Are Underway](http://cxsjsx.openjudge.cn/hw202502/E/)
 
 [World of Warcraft: Equip The Warriors](http://cxsjsx.openjudge.cn/hw202504/C/)
